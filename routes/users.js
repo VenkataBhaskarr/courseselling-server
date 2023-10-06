@@ -35,7 +35,10 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/courses', userAuthentication, async (req, res) => {
-    const courses = await Course.find({published :true})
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 10
+    const skip = (page-1)*limit
+    const courses = await Course.find({published :true}).skip(skip).limit(limit)
     res.json({courses})
 });
 
