@@ -46,7 +46,7 @@ router.post('/courses/:courseId', userAuthentication, async (req, res) => {
     if (course) {
         const user = await User.findOne({ username: req.user.username });
         if (user) {
-            user.purchasedCourses.push(course);
+            user.purchasedCourses.push(id);
             await user.save();
             res.json({ message: 'Course purchased successfully' });
         } else {
