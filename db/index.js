@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
 
 const adminSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    pid: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
 })
 
 const courseSchema = new mongoose.Schema({
