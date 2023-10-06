@@ -58,7 +58,7 @@ router.post('/courses/:courseId', userAuthentication, async (req, res) => {
 });
 
 router.get('/purchasedCourses', userAuthentication, async (req, res) => {
-    const purchased = await Course.findOne({username : req.user.username}).populate('purchasedCourses')
+    const purchased = await User.findOne({username : req.user.username}).populate('purchasedCourses')
     if(purchased){
         res.json({purchasedCourses : purchased.purchasedCourses || []})
     }
