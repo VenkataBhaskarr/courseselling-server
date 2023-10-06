@@ -62,7 +62,8 @@ router.put('/courses/:courseId',adminAuthentication, async (req, res) => {
 });
 
 router.get('/courses',adminAuthentication, async (req, res) => {
-    const courses = await Course.find({});
+    const courseIds = req.user.pid;
+    const courses = await Course.find({_id : {$in : courseIds});
     res.json({ courses });
 });
 
