@@ -6,7 +6,7 @@ const {adminAuthentication} = require("../middleware/adminAuth.js")
 
 
 router.post('/signup',async (req, res) => {
-    const {username , password} = req.headers
+    const {username , password} = req.body
     console.log(username)
     const admin = await Admin.findOne({
         username : username,
