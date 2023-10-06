@@ -63,7 +63,7 @@ router.get('/purchasedCourses', userAuthentication, async (req, res) => {
         res.json({purchasedCourses : purchased.purchasedCourses || []})
     }
     else{
-        res.send("no courses available")
+        res.send("no user available")
     }
 });
 
